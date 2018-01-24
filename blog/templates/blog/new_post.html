@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  <div id="new_post_app">
+    <div>
+      <form v-on:submit.prevent="submitNewPost">
+        <div>
+          <label class="label" for="title">Title:</label>
+          <input class="input" type="text" v-model="new_post.title">
+        </div>
+        <div>
+          <label class="label" for="author">Author:</label>
+          <input class="input" type="text" v-model="new_post.author">
+        </div>
+        <div>
+          <label class="label" for="text">Post:</label>
+          <textarea class="textarea" v-model="new_post.text"></textarea>
+        </div>
+        <div>
+          <button class="button" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static "blog/js/new_post.js" %}"></script>
+{% endblock %}

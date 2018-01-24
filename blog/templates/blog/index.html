@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  <div id="index_app">
+    <section class="section">
+      <button class="button" class="title">
+        <a href="newpost">New Post</a>
+      </button>
+    </section>
+    
+    <div v-for="post in posts" :key="post.id">
+      <section class="section">
+        <div class="container">
+          <h2 class="title"><a v-bind:href="`posts/${post.id}`"> ${ post.title }$ </a></h2>
+          <div class="subtitle">
+            By ${ post.author }$ &mdash; ${ formatDate(post.posted_date) }$
+          </div>
+          <section class="section card">
+            <div v-for="par in formatText(post.text)">
+              ${ par }$
+              <br>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="{% static "blog/js/blog.js" %}"></script>
+{% endblock %}

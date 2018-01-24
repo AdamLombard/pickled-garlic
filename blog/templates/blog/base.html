@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>{% block title %}Your Website{% endblock %}</title>
+    <meta name="description" content="A description of your website...">
+    <meta name="author" content="You">
+
+    <link rel="stylesheet" type="text/css" href="{% static "blog/css/bulma.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "blog/css/blog.css" %}">
+    
+    <script src="{% static "blog/js/moment.min.js" %}"></script>
+    <script src="{% static "blog/js/vue.js" %}"></script>
+    <script src="{% static "blog/js/axios.js" %}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="hero is-primary is-medium">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title"><a href="/">
+              Pickled Garlic Daily</a>
+            </h1>
+            <h2 class="subtitle">
+              The most up-to-the-second pickled garlic news on the planet!
+            </h2>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          {% block content %}
+              Your content goes here...
+          {% endblock %}
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

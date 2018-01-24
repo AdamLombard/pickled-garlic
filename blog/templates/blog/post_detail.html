@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  <div id="post_app">
+    <div>
+      <div>
+        <h2 class="title"> ${ post.title }$ </h2>
+        <div>
+          By : ${ post.author }$
+        </div>
+        <div> 
+          Posted : ${ formatDate(post.posted_date) }$
+        </div>
+        <section class="section card">
+          <div v-for="par in formatText(post.text)">
+            ${ par }$
+            <br>
+          </div>
+        </section>
+        <section class="section"></section>
+          <h4 class="title">Comments:</h4>
+          <comment-form :newcomment="new_comment" :submit-comment="submitComment"></comment-form>
+          <threaded-comments :comments="nestedComments" :reply="reply" 
+          :reply-to-comment="replyToComment" :delete-comment="deleteComment" :update-comment="updateComment"
+          :format-date="formatDate"></threaded-comments>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="{% static "blog/js/post_detail.js" %}"></script>
+{% endblock %}
